@@ -15,6 +15,6 @@ async def send_message(text):
         await bot.send_message(text=text, chat_id=MYCHAT_ID)
 
 if __name__ == "__main__":
-    print('gogo')
+    print('gogo', TOKEN, MYCHAT_ID)
     loop.create_task(send_message('action test'))
     time.sleep(20)
