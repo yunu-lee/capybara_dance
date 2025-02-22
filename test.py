@@ -8,14 +8,15 @@ loop = asyncio.get_event_loop()
 TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 MYCHAT_ID = os.getenv('TELEGRAM_CHAT_ID_TEST')
 
-# 메시지 보내는 함수
-async def send_message(text):
-    bot = telegram.Bot(TOKEN)
-    async with bot:
-        await bot.send_message(text=text, chat_id=MYCHAT_ID)
+import asyncio
+import telegram
 
-if __name__ == "__main__":
-    print('gogo', TOKEN, MYCHAT_ID)
-    # loop.create_task(send_message('action test'))
-    send_message('action test')
-    time.sleep(20)
+
+async def main():
+    bot = telegram.Bot("TOKEN")
+    async with bot:
+        print(await bot.get_me())
+
+
+if __name__ == '__main__':
+    asyncio.run(main())
