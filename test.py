@@ -13,7 +13,7 @@ import telegram
 
 
 async def main():
-    bot = telegram.Bot("TOKEN")
+    bot = telegram.Bot(TOKEN)
     async with bot:
         print(await bot.get_me())
 
