@@ -1,6 +1,7 @@
 import asyncio
 import telegram
 import os
+import time
 
 loop = asyncio.get_event_loop()
 
@@ -16,3 +17,4 @@ async def send_message(text):
 if __name__ == "__main__":
     print('gogo')
     loop.create_task(send_message('action test'))
+    time.sleep(20)
