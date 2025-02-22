@@ -1,11 +1,11 @@
 import asyncio
 import telegram
-from google.colab import userdata
+import os
 
 loop = asyncio.get_event_loop()
 
-TOKEN = userdata.get('TELEGRAM_BOT_TOKEN')
-MYCHAT_ID = userdata.get('TELEGRAM_CHAT_ID_TEST')
+TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+MYCHAT_ID = os.getenv('TELEGRAM_CHAT_ID_TEST')
 
 # 메시지 보내는 함수
 async def send_message(text):
