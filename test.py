@@ -16,5 +16,6 @@ async def send_message(text):
 
 if __name__ == "__main__":
     print('gogo', TOKEN, MYCHAT_ID)
-    loop.create_task(send_message('action test'))
+    # loop.create_task(send_message('action test'))
+    send_message('action test')
     time.sleep(20)
