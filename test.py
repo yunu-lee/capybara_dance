@@ -15,8 +15,12 @@ import telegram
 async def main():
     bot = telegram.Bot(TOKEN)
     async with bot:
-        print(await bot.get_me())
-
+        
+async def main():
+    bot = telegram.Bot(TOKEN)
+    async with bot:
+        #print(await bot.get_me())
+        await bot.send_message(text='Hi Capybara', chat_id=MYCHAT_ID)
 
 if __name__ == '__main__':
     asyncio.run(main())
