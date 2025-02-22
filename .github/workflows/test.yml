@@ -27,5 +27,8 @@ jobs:
         pip install -r requirements.txt
         
     - name: Run tests
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID_TEST: ${{ secrets.TELEGRAM_CHAT_ID_TEST }}
       run: |
         python test.py
