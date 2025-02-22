@@ -10,11 +10,6 @@ MYCHAT_ID = os.getenv('TELEGRAM_CHAT_ID_TEST')
 
 import asyncio
 import telegram
-
-
-async def main():
-    bot = telegram.Bot(TOKEN)
-    async with bot:
         
 async def main():
     bot = telegram.Bot(TOKEN)
