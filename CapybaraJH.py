@@ -12,7 +12,7 @@ load_dotenv()
 loop = asyncio.get_event_loop()
 
 TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
-MYCHAT_ID = os.getenv('TELEGRAM_CHAT_ID_TEST')
+MYCHAT_ID = os.getenv('TELEGRAM_CHAT_ID_JH')
 
 
 async def bot(df: pd.DataFrame):
