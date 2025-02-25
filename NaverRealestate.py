@@ -9,6 +9,25 @@ class NaverRealestate:
     def __init__(self):
         pass
 
+    @staticmethod
+    def convert_to_float(value_str):
+        value_str = value_str.replace(',', '')
+        split = value_str.split('억')
+
+        try:
+            a = float(split[0])
+        except Exception as e:
+            print(value_str, e)
+            a = 0
+
+        try:
+            b = float(split[1]) / 10000
+        except Exception as e:
+            print(value_str, e)
+            b = 0
+
+        return a + b
+
     def get_data(self, apt_id: int):
         print('get data from site...')
         cookies = {
@@ -98,6 +117,7 @@ class NaverRealestate:
         apt_df['square_meter'] = apt_df['areaName'].apply(
             lambda x: int(re.match(r'\d+', x).group()) if re.match(r'\d+', x) else None)
         apt_df['pyoung'] = apt_df['square_meter'].apply(lambda x: x * 0.3025 if x else x)
+        apt_df['dealOrWarrantPrcNum'] = apt_df['dealOrWarrantPrc'].apply(lambda x: self.convert_to_float(x))
         return apt_df
 
 

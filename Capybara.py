@@ -28,7 +28,7 @@ async def bot(df: pd.DataFrame):
         df_1 = df[df['floor_num'] == '1'].reset_index(drop=True)
         msg += f'24평 이상 1층 매물이 {len(df_1)}개 있습니다.\n\n'
         for idx, row in df_1.iterrows():
-            msg += f"{idx + 1}) {row.get('areaName')} ({row.get('pyoung'):.1f}평) {row.get('buildingName')} {row.get('floorInfo')}층 {row.get('dealOrWarrantPrc')} {row.get('direction')} {row.get('articleFeatureDesc')} {row.get('realtorName')} {row.get('cpPcArticleUrl')}"
+            msg += f"{idx + 1}) {row.get('areaName')} ({row.get('pyoung'):.1f}평) {row.get('buildingName')} {row.get('floorInfo')}층 {row.get('dealOrWarrantPrcNum'):.1f}억 {row.get('direction')} {row.get('articleFeatureDesc')} {row.get('realtorName')} {row.get('cpPcArticleUrl')}"
             msg += '\n\n'
 
         print('sending a message')
