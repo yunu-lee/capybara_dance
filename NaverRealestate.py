@@ -10,6 +10,7 @@ class NaverRealestate:
         pass
 
     def get_data(self, apt_id: int):
+        print('get data from site...')
         cookies = {
             'NAC': '89DJBUwys8Bd',
             'NNB': 'S7CRYINPWEGWO',
@@ -66,7 +67,7 @@ class NaverRealestate:
 
         apt_df = all_df[[
             # 'articleNo',
-            # 'articleName',
+            'articleName',
             # 'articleStatus', 'realEstateTypeCode',       'realEstateTypeName', 'articleRealEstateTypeCode',       'articleRealEstateTypeName', 'tradeTypeCode',
             # 'tradeTypeName',
             # 'verificationTypeCode',

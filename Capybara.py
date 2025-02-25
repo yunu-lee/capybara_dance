@@ -19,7 +19,7 @@ async def bot(df: pd.DataFrame):
     bot = telegram.Bot(TOKEN)
 
     csv_name = f'{datetime.now().strftime("%Y-%m-%d")}.csv'
-    df.to_csv(csv_name)
+    df.to_csv(csv_name, index=False)
 
     async with bot:
         # print(await bot.get_me())
@@ -31,11 +31,13 @@ async def bot(df: pd.DataFrame):
             msg += f"{idx + 1}) {row.get('areaName')} ({row.get('pyoung'):.1f}평) {row.get('buildingName')} {row.get('floorInfo')}층 {row.get('dealOrWarrantPrc')} {row.get('direction')} {row.get('articleFeatureDesc')} {row.get('realtorName')} {row.get('cpPcArticleUrl')}"
             msg += '\n\n'
 
+        print('sending a message')
         await bot.send_message(
             text=msg,
             chat_id=MYCHAT_ID
         )
 
+        print('sending a document')
         await bot.send_document(
             document=csv_name,
             caption='24평 이상 모든 매물 정보',
