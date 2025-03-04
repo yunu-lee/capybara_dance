@@ -1,5 +1,6 @@
-python-telegram-bot
-pandas
-requests
-asyncio
-dotenv
+python-telegram-bot~=21.10
+pandas~=2.2.3
+requests~=2.32.3
+asyncio~=3.4.3
+dotenv~=0.9.9
+pymongo~=4.11.2
