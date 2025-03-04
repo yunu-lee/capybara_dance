@@ -3,12 +3,9 @@ name: Python application
 on:
   push:
     branches:
-      - main
+      - test
 
   workflow_dispatch:
-
-  schedule:
-    - cron: '40 14 * * *'
 
 jobs:
   build:
@@ -33,5 +30,6 @@ jobs:
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID_TEST: ${{ secrets.TELEGRAM_CHAT_ID_TEST }}
+        MONGODB_URI: ${{ secrets.MONGODB_URI }}
       run: |
-        python test.py
+        python DBHandler.py
