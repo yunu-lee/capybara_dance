@@ -24,10 +24,16 @@ async def bot(df: pd.DataFrame):
     async with bot:
         # print(await bot.get_me())
         df = df[(df['pyoung'] > 20) & (df['pyoung'] < 30)]
+        df.drop(df[df['floor_num'] == '저'].index, inplace=True)
+        df.drop(df[df['floor_num'] == '1'].index, inplace=True)
+        df.drop(df[df['floor_num'] == '2'].index, inplace=True)
+        df.drop(df[df['floor_num'] == '3'].index, inplace=True)
+        df.drop(df[df['floor_num'] == '4'].index, inplace=True)
+
         result = df.groupby(['articleName', 'pyoung']).apply(
             lambda x: x.nsmallest(2, 'dealOrWarrantPrcNum')).reset_index(drop=True)
 
-        msg = f'{datetime.now().strftime("%Y-%m-%d")} 부동산 정보 (20평대, 평수별 최저가 2개씩)\n\n\n'
+        msg = f'{datetime.now().strftime("%Y-%m-%d")} 부동산 정보 (20평대, 4층 이하 제외, 평수별 최저가 2개씩)\n\n\n'
         for key, group in result.groupby(by='articleName'):
             msg += f'# {key}\n\n'
             for idx, row in group.reset_index(drop=True).iterrows():
