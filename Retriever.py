@@ -5,7 +5,7 @@ import pandas as pd
 
 class Retriever(ABC):
     def __init__(self):
-        pass
+        self.retrieved_data = None
 
     @abstractmethod
     def retrieve(self) -> pd.DataFrame():

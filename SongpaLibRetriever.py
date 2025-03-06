@@ -66,10 +66,23 @@ class SongpaLibRetriever(Retriever):
         df['audience'] = df['audience'].apply(lambda x: x.replace('(', '').replace(')', ''))
         df['price'] = df['price'].apply(lambda x: x.replace('수강료 :', ''))
 
+        self.retrieved_data = df
         return df
 
     def export(self):
-        pass
+        msg = '송파위례도서관 프로그램 상위 2개\n\n'
+
+        for idx, row in self.retrieved_data[0:min(2, len(self.retrieved_data))].iterrows():
+            msg += f"{idx + 1}) {row.get('title')}, {row.get('audience')}, {row.get('price')}, 일정({row.get('class_start')} ~ {row.get('class_end')}, {row.get('class_day_time')}), 등록({row.get('register_start')} ~ {row.get('register_end')})"
+            msg += '\n\n'
+        msg += 'https://www.splib.or.kr/spwlib/menu/10406/program/30014/eventList.do'
+
+        data_to_notify = [{
+            'type': 'text',
+            'content': msg
+        }]
+
+        return data_to_notify
 
 
 if __name__ == '__main__':
