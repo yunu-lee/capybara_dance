@@ -75,12 +75,12 @@ class SongpaLibRetriever(Retriever):
         return df
 
     def export(self):
-        msg = '송파위례도서관 프로그램\n\n'
+        msg = '송파위례도서관\n\n'
 
         df = self.retrieved_data[self.retrieved_data['register_end'] > (datetime.now() - timedelta(days=1))]
 
         if df.empty:
-            msg += '모집중인 프로그램이 없습니다.\n\n'
+            msg += '모집중인 강좌가 없습니다.\n\n'
         else:
             for idx, row in df.iterrows():
                 msg += f"{idx + 1}) {row.get('title')}, {row.get('audience')}, {row.get('price')}, 일정({row.get('class_start')} ~ {row.get('class_end')}, {row.get('class_day_time')}), 등록({row.get('register_start')} ~ {row.get('register_end')})"
