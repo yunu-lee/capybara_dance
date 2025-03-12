@@ -1,4 +1,4 @@
-name: Capybara dance
+name: Capybara dance APT
 
 on:
   workflow_dispatch:
