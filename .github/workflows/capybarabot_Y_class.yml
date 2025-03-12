@@ -1,4 +1,4 @@
-name: Capybara dance
+name: Capybara dance Class
 
 on:
   workflow_dispatch:
