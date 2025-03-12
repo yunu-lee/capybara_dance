@@ -75,7 +75,7 @@ class SongpaLibRetriever(Retriever):
         return df
 
     def export(self):
-        msg = '송파위례도서관\n\n'
+        msg = f'{datetime.now().strftime("%Y-%m-%d")} 송파위례도서관\n\n'
 
         df = self.retrieved_data[self.retrieved_data['register_end'] > (datetime.now() - timedelta(days=1))]
 
