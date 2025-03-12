@@ -3,3 +3,4 @@ pandas
 requests
 asyncio
 dotenv
+beautifulsoup4
