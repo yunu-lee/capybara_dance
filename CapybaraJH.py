@@ -36,8 +36,8 @@ async def bot(df: pd.DataFrame):
     async with bot:
         # print(await bot.get_me())
         df = df[
-        (df[].isin(apt_id_20) & (df['pyoung'] > 20) & (df['pyoung'] < 30))
-        | (df[].isin(apt_id_30) & (df['pyoung'] > 30) & (df['pyoung'] < 40))
+        (df['id'].isin(apt_id_20) & (df['pyoung'] > 20) & (df['pyoung'] < 30))
+        | (df['id'].isin(apt_id_30) & (df['pyoung'] > 30) & (df['pyoung'] < 40))
         ]
         df.drop(df[df['floor_num'] == '저'].index, inplace=True)
         df.drop(df[df['floor_num'] == '1'].index, inplace=True)
