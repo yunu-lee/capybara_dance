@@ -48,7 +48,7 @@ async def bot(df: pd.DataFrame):
         result = df.groupby(['articleName', 'pyoung']).apply(
             lambda x: x.nsmallest(2, 'dealOrWarrantPrcNum')).reset_index(drop=True)
 
-        msg = f'{datetime.now().strftime("%Y-%m-%d")} 부동산 정보 (20평대, 4층 이하 제외, 평수별 최저가 2개씩)\n\n\n'
+        msg = f'{datetime.now().strftime("%Y-%m-%d")} 부동산 정보 (20평대(대구30평), 4층 이하 제외, 평수별 최저가 2개씩)\n\n\n'
         for key, group in result.groupby(by='articleName'):
             msg += f'# {key}\n\n'
             for idx, row in group.reset_index(drop=True).iterrows():
