@@ -14,6 +14,18 @@ loop = asyncio.get_event_loop()
 TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 MYCHAT_ID = os.getenv('TELEGRAM_CHAT_ID_JH')
 
+apt_id_20 = [
+        117329,  # 목동 센트럴아이파크위브
+        127424,  # 철산역 롯데캐슬&SK VIEW 클래스티지
+        109524,  # 광명역써밋플레이스(주상복합)
+        109177,  # 광명역파크자이(주상복합)
+        174562,  # 이문아이파크자이(3-1BL)
+]
+apt_id_30 =[
+        125062,  # 대구 남산자이하늘채
+        133974,  # 대구 달성파크푸르지오힐스테이트
+        152696,  # 대구 두류역자이(주상복합)
+    ]
 
 async def bot(df: pd.DataFrame):
     bot = telegram.Bot(TOKEN)
@@ -23,7 +35,10 @@ async def bot(df: pd.DataFrame):
 
     async with bot:
         # print(await bot.get_me())
-        df = df[(df['pyoung'] > 20) & (df['pyoung'] < 30)]
+        df = df[
+        (df[].isin(apt_id_20) & (df['pyoung'] > 20) & (df['pyoung'] < 30)
+        | (df[].isin(apt_id_30) & (df['pyoung'] > 30) & (df['pyoung'] < 40)
+        ]
         df.drop(df[df['floor_num'] == '저'].index, inplace=True)
         df.drop(df[df['floor_num'] == '1'].index, inplace=True)
         df.drop(df[df['floor_num'] == '2'].index, inplace=True)
@@ -56,19 +71,9 @@ async def bot(df: pd.DataFrame):
 
 
 if __name__ == '__main__':
-    apt_id = [
-        117329,  # 목동 센트럴아이파크위브
-        127424,  # 철산역 롯데캐슬&SK VIEW 클래스티지
-        109524,  # 광명역써밋플레이스(주상복합)
-        109177,  # 광명역파크자이(주상복합)
-        174562,  # 이문아이파크자이(3-1BL)
-        125062,  # 대구 남산자이하늘채
-        133974,  # 대구 달성파크푸르지오힐스테이트
-        152696,  # 대구 두류역자이(주상복합)
-    ]
     nr = NaverRealestate()
     all_apt = pd.DataFrame()
-    for a in apt_id:
+    for a in apt_id_20 + apt_id_30:
         apt = nr.get_data(apt_id=a)
         all_apt = pd.concat([all_apt, apt], ignore_index=True)
 
