@@ -95,7 +95,7 @@ class NaverRealestate:
             'dealOrWarrantPrc', 'areaName',
             # 'area1', 'area2',
             'direction',
-            # 'articleConfirmYmd',
+            'articleConfirmYmd',
             # 'siteImageCount',
             'articleFeatureDesc',
             # 'tagList',
