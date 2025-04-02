@@ -118,6 +118,7 @@ class NaverRealestate:
             lambda x: int(re.match(r'\d+', x).group()) if re.match(r'\d+', x) else None)
         apt_df['pyoung'] = apt_df['square_meter'].apply(lambda x: x * 0.3025 if x else x)
         apt_df['dealOrWarrantPrcNum'] = apt_df['dealOrWarrantPrc'].apply(lambda x: self.convert_to_float(x))
+        apt_df['apt_id'] = apt_id
         return apt_df
 
 
