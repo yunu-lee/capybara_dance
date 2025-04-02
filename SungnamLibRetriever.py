@@ -107,7 +107,7 @@ class SungnamLibRetriever(Retriever):
                 chunk = article[k:k + col_len]
                 program = {
                     'host': '성남위례도서관',
-                    'title': chunk[2],
+                    'title': chunk[1],
                     'class_start': datetime.strptime(chunk[6].replace('교육기간', ''), '%y.%m.%d'),
                     'class_end': datetime.strptime(chunk[8], '%y.%m.%d'),
                     'class_type': chunk[10],
