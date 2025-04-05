@@ -51,7 +51,27 @@ class DataGoRetriever(Retriever):
                 else:
                     break
 
-        return all_df
+        all_df['floor'] = all_df['floor'].astype('int')
+        all_df['excluUseAr'] = all_df['excluUseAr'].astype('float')
+
+        # filter
+        if kwargs.get('apt_name'):
+            all_df = all_df[all_df['aptNm'].str.contains(kwargs.get('apt_name'))]
+
+        if kwargs.get('min_floor'):
+            all_df = all_df[all_df['floor'] >= kwargs.get('min_floor')]
+
+        if kwargs.get('max_floor'):
+            all_df = all_df[all_df['floor'] <= kwargs.get('max_floor')]
+
+        if kwargs.get('min_size'):
+            all_df = all_df[all_df['excluUseAr'] >= kwargs.get('min_size')]
+
+        if kwargs.get('max_size'):
+            all_df = all_df[all_df['excluUseAr'] <= kwargs.get('max_size')]
+
+
+        return all_df.reset_index(drop=True)
 
     def export(self):
         pass
@@ -72,5 +92,14 @@ if __name__ == '__main__':
         '송파구': '11710',
 
     }
-    result = dgr.retrieve(area_code=area_code.get('송파구'), month_before=2)
+    result = dgr.retrieve(
+        area_code=area_code.get('송파구'),
+        apt_name='위례24단지',
+        min_floor=3,
+        # max_floor=5,
+        min_size=60,
+        # max_size=100,
+        month_before=12
+    )
+
     print(result)
