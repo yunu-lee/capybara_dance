@@ -11,7 +11,7 @@ from TelegramNotifier import TelegramNotifier
 load_dotenv()
 
 TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
-MYCHAT_ID = os.getenv('TELEGRAM_CHAT_ID_TEST')
+MYCHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 
 if __name__ == '__main__':
     notifier = TelegramNotifier(config={
