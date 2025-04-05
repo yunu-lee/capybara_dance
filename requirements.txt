@@ -4,3 +4,5 @@ requests
 asyncio
 dotenv
 beautifulsoup4
+xmltodict
+matplotlib
