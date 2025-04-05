@@ -8,7 +8,7 @@ from Retriever import Retriever
 
 
 class HanamLibRetriever(Retriever):
-    def retrieve(self) -> pd.DataFrame():
+    def retrieve(self, **kwargs) -> pd.DataFrame():
         cookies = {
             'JSESSIONID': '0204E6E172FAC3E895CD36E9A86E3757',
             '_fwb': '234p2RRXB2ljOPNUJbK8Kce.1741842462506',

@@ -8,7 +8,7 @@ from Retriever import Retriever
 
 
 class SongpaLibRetriever(Retriever):
-    def retrieve(self) -> pd.DataFrame():
+    def retrieve(self, **kwargs) -> pd.DataFrame():
 
         cookies = {
             '_fwb': '89WcExhieiQWyIvv9c8cQi.1740013933943',

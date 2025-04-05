@@ -8,7 +8,7 @@ from Retriever import Retriever
 
 
 class SungnamLibRetriever(Retriever):
-    def retrieve(self) -> pd.DataFrame():
+    def retrieve(self, **kwargs) -> pd.DataFrame():
         cookies = {
             'SCOUTER': 'x53s7vn3c6933q',
             'JSESSIONID': '27FF26E9662DAC9BFBF02F983DE1CF4A.tomcat11',

@@ -8,7 +8,7 @@ from Retriever import Retriever
 
 
 class SongpaLearnRetriever(Retriever):
-    def retrieve(self) -> pd.DataFrame():
+    def retrieve(self, **kwargs) -> pd.DataFrame():
         cookies = {
             'JSESSIONID': '0uURPfVNodBq955AzJJCOouFnc0wz0VURORnGpxPYV2JYJC6vpCvqHM9a3K3TIgu.amV1c19kb21haW4vc3NlbXdhc18x',
             'WMONID': 'm7sqAGgQ330',

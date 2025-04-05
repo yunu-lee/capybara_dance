@@ -47,3 +47,31 @@ class TelegramNotifier(Notifier):
 
             time.sleep(1)
 
+
+if __name__ == '__main__':
+    from dotenv import load_dotenv
+
+    load_dotenv()
+    TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+    MYCHAT_ID = os.getenv('TELEGRAM_CHAT_ID_TEST')
+
+    notifier = TelegramNotifier({
+        'bot_token': TOKEN,
+        'chat_id': MYCHAT_ID
+    })
+
+    notifier.notify(
+        [
+            {'type': 'text',
+             'content': 'test message'},
+            {'type': 'file',
+             'file_path': './2025-03-05.csv',
+             'caption': 'sending a file'},
+            {'type': 'file',
+             'file_path': './test.jpg',
+             'caption': 'sending a image as file'},
+            {'type': 'image',
+             'file_path': './test.jpg',
+             'caption': 'sending a image'}
+        ]
+    )
