@@ -39,6 +39,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           TELEGRAM_CHAT_ID_TEST: ${{ secrets.TELEGRAM_CHAT_ID_TEST }}
           TELEGRAM_CHAT_ID_JH: ${{ secrets.TELEGRAM_CHAT_ID_JH }}
+          ATLAS_URI: ${{ secrets.ATLAS_URI }}
         run: |
           python db_test.py
 
