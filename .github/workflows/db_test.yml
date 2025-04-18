@@ -17,6 +17,11 @@ jobs:
         id: get-ip
         run: echo "ip=$(curl -s https://checkip.amazonaws.com)" >> $GITHUB_OUTPUT
 
+      - name: show Runner IP Address
+        id: show-ip
+        run: echo $GITHUB_OUTPUT
+
+
       - name: Add IP to MongoDB Atlas Whitelist
         id: allow-ip
         run: |
