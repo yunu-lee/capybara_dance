@@ -1,6 +1,9 @@
 name: MongoDB Atlas 접근 테스트
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
