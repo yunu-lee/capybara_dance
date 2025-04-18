@@ -1,5 +1,6 @@
 import pymongo
 import os
+import pandas as pd
 
 ATLAS_URI = os.getenv('ATLAS_URI')
 
