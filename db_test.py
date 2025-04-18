@@ -1,4 +1,5 @@
 import pymongo
+import os
 
 ATLAS_URI = os.getenv('ATLAS_URI')
 
