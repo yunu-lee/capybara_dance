@@ -6,3 +6,4 @@ dotenv
 beautifulsoup4
 xmltodict
 matplotlib
+pymongo
