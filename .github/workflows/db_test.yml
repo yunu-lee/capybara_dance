@@ -19,7 +19,7 @@ jobs:
 
       - name: show Runner IP Address
         id: show-ip
-        run: echo $GITHUB_OUTPUT
+        run: echo "$GITHUB_OUTPUT"
 
 
       - name: Add IP to MongoDB Atlas Whitelist
