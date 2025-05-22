@@ -1,0 +1,32 @@
+name: Daily Real Estate Data Collection
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 매일 01:00 UTC에 실행
+  workflow_dispatch:  # 수동 실행 옵션 추가
+
+jobs:
+  collect-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Run RealEstateDB
+      env:
+        MONGO_URL: ${{ secrets.MONGO_URL }}
+        SERVICE_KEY: ${{ secrets.SERVICE_KEY }}
+      run: |
+        python RealEstateDB.py --lawd_cd 11710 --months 3  # 서울시 송파구
+        python RealEstateDB.py --lawd_cd 11680 --months 3  # 서울시 강남구
+        python RealEstateDB.py --lawd_cd 11650 --months 3  # 서울시 서초구 
