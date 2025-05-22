@@ -33,15 +33,22 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
+    - name: Check environment variables
+      run: |
+        if [ -z "$MONGO_URL" ] || [ -z "$SERVICE_KEY" ]; then
+          echo "Error: MONGO_URL or SERVICE_KEY is not set"
+          exit 1
+        fi
+        
     - name: Run RealEstateDB
       env:
         MONGO_URL: ${{ secrets.MONGO_URL }}
         SERVICE_KEY: ${{ secrets.SERVICE_KEY }}
       run: |
         if [ "${{ github.event_name }}" = "schedule" ]; then
-          # 자동 실행 시 강남구와 송파구 데이터 수집
+          echo "Running scheduled job..."
           python RealEstateDB.py --lawd_cd 11680 --months 2  # 강남구
           python RealEstateDB.py --lawd_cd 11710 --months 2  # 송파구
         else
-          # 수동 실행 시 사용자 입력값 사용
+          echo "Running manual job..."
           python RealEstateDB.py --lawd_cd ${{ github.event.inputs.lawd_cd }} --months ${{ github.event.inputs.months }} 
