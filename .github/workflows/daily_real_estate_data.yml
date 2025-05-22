@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       lawd_cd:
-        description: '법정동 코드 (예: 11710-송파구, 11680-강남구, 11650-서초구)'
+        description: '법정동 코드 (예: 11710-송파구, 11680-강남구, 11650-서초구, 11470-양천구, 11230-동대문구, 41210-광명시, 27170-대구 서구, 27110-대구 중구)'
         required: true
         default: '11710'
         type: string
