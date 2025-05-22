@@ -35,7 +35,7 @@ jobs:
         
     - name: Run RealEstateDB
       env:
-        MONGO_URL: ${{ secrets.MONGO_URL }}
+        MONGODB_URI: ${{ secrets.MONGODB_URI }}
         SERVICE_KEY: ${{ secrets.DATA_GO_KEY }}
       run: |
         if [ "${{ github.event_name }}" = "schedule" ]; then
