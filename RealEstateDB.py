@@ -13,9 +13,9 @@ class RealEstateDB:
         """
         # .env 파일에서 MongoDB 연결 정보 로드
         load_dotenv()
-        self.mongo_url = os.getenv('MONGO_URL')
+        self.mongo_url = os.getenv('MONGODB_URI')
         if not self.mongo_url:
-            raise ValueError("MONGO_URL이 .env 파일에 설정되어 있지 않습니다.")
+            raise ValueError("MONGODB_URI .env 파일에 설정되어 있지 않습니다.")
             
         # MongoDB 연결
         self.client = MongoClient(self.mongo_url)

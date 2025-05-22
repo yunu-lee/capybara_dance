@@ -35,13 +35,14 @@ jobs:
         
     - name: Run RealEstateDB
       env:
-        MONGO_URL: ${{ secrets.MONGO_URL }}
-        SERVICE_KEY: ${{ secrets.SERVICE_KEY }}
+        MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        DATA_GO_KEY: ${{ secrets.DATA_GO_KEY }}
       run: |
         if [ "${{ github.event_name }}" = "schedule" ]; then
-          # 자동 실행 시 강남구와 송파구 데이터 수집
+          echo "Running scheduled job..."
           python RealEstateDB.py --lawd_cd 11680 --months 2  # 강남구
           python RealEstateDB.py --lawd_cd 11710 --months 2  # 송파구
         else
-          # 수동 실행 시 사용자 입력값 사용
-          python RealEstateDB.py --lawd_cd ${{ github.event.inputs.lawd_cd }} --months ${{ github.event.inputs.months }} 
+          echo "Running manual job..."
+          python RealEstateDB.py --lawd_cd ${{ github.event.inputs.lawd_cd }} --months ${{ github.event.inputs.months }}
+        fi 
