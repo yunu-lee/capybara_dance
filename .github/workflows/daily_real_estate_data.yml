@@ -44,4 +44,5 @@ jobs:
           python RealEstateDB.py --lawd_cd 11710 --months 2  # 송파구
         else
           echo "Running manual job..."
-          python RealEstateDB.py --lawd_cd ${{ github.event.inputs.lawd_cd }} --months ${{ github.event.inputs.months }} 
+          python RealEstateDB.py --lawd_cd ${{ github.event.inputs.lawd_cd }} --months ${{ github.event.inputs.months }}
+        fi 
