@@ -33,17 +33,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
-    - name: Check environment variables
-      run: |
-        if [ -z "$MONGO_URL" ] || [ -z "$SERVICE_KEY" ]; then
-          echo "Error: MONGO_URL or SERVICE_KEY is not set"
-          exit 1
-        fi
-        
     - name: Run RealEstateDB
       env:
         MONGO_URL: ${{ secrets.MONGO_URL }}
-        SERVICE_KEY: ${{ secrets.SERVICE_KEY }}
+        SERVICE_KEY: ${{ secrets.DATA_GO_KEY }}
       run: |
         if [ "${{ github.event_name }}" = "schedule" ]; then
           echo "Running scheduled job..."
